@@ -1,0 +1,25 @@
+li{
+    list-style-type: none;
+    display: inline;
+    margin:10px;
+    font-size: 18px;
+    cursor: pointer;
+    color: white;
+    padding: 10px;
+}
+#navbar{
+    margin: 0px;
+    background-color: none;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.3); 
+    width: 20%;
+    right: 0%;
+    transform: translate(400%,50%);
+}
+p{
+    text-decoration: unset;
+}
+#Link{
+    text-decoration: none;
+    color:'white' ;
+}

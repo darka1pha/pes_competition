@@ -1,0 +1,122 @@
+@import url(https://fonts.googleapis.com/css?family=Audiowide);
+//mixins
+@mixin bp($bp, $min-max: min-width) {
+    $em: $bp/16;
+    @media(#{$min-max}: #{$em}em) {
+        @content;
+    }
+}
+
+*,
+*:before,
+*:after  { box-sizing: inherit; }
+
+#hdr { 
+    color: #fff;
+    font-family: "Audiowide", cursive;
+    font-size: 2em;
+    font-size: 6vw;
+    line-height: 1.2;
+    margin: 0.5em 0 3em;
+    text-shadow: 1px 1px 1px #333;
+}
+
+@include bp(1075) { #hdr { font-size: 4em; } }
+
+.wrapper {
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    font-size: 16px; 
+    font-weight: normal;
+    line-height: 1.4;
+    height: 48vh;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+#all{
+    position: absolute;
+    top: 50%;
+	left: 50%;
+    transform: translate(-50%,-50%);
+    width: 70%;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.wrap {
+    height: 90%;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    background: #120103;
+    color: #fff;
+    text-align: center;
+}
+
+header {
+    background: #FF4B2B;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 900;
+    width: 100%;
+    label {
+        color: #ffffff;
+        cursor: pointer;
+        display: inline-block;
+        line-height: 4.25em;
+        font-size: .75em;
+        font-weight: bold;
+        padding: 0 1em;
+    }
+}
+
+header label:hover {
+    background: #2e353b;
+}
+
+
+.slide {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 100%;
+    z-index: 10;
+    padding:  8em 1em 0;
+    background-color: #120103;
+    background-position: 50% 50%;
+    background-size: cover;
+    transition: left 0s .75s;        
+    h1 {
+        opacity: 0;
+        transform: translateY(100%);
+        transition: transform .5s .5s, opacity .5s;
+    }
+}
+
+[id^="slide"]:checked + .slide {
+    left: 0;
+    z-index: 100;
+    transition: left .65s ease-out;
+    
+    & h1 {
+        opacity: 1;
+        transform: translateY(0);
+        transition: all .5s .5s;
+    }
+}
+#btn{
+    color: white;
+	height: 55px;
+	width: 20%;
+    background-color: #FF4B2B;
+    font-size: 30px;
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+	font-weight: bold;
+	border: none;
+	outline: none;
+    cursor: pointer;
+}
+
