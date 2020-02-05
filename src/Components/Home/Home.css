@@ -48,15 +48,15 @@
         flex-direction: column;
     }
     #disc{
-        font-size: 18px;
+        font-size: 16px;
     }
     #now{
         font-size: 15px;
     }
     #reg-btn{
-        height: 45px;
-        width: 100px;
-        font-size: 20px;
+        height: 40px;
+        width: 90px;
+        font-size: 16px;
         font-weight: bold;
         color: white;
         background-color:rgb(255, 36, 87);

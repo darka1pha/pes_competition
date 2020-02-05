@@ -1,9 +1,9 @@
-import React , {useState,useEffect} from 'react'
+import React , {useState,useEffect,useReducer} from 'react'
 import './TeamSelection.scss'
 import axios from 'axios'
 const TeamSelection = props =>{
     const [leagues,setLeagues]=useState([])
-    const [currentLeague,setCurrentLeague]=useState()
+    const [currentLeague,setCurrentLeague]=useState({})
     useEffect(()=>{
         //get league
         axios.get('https://amir7amiri.ir/pes/api/pesteams/get/all')
@@ -12,7 +12,7 @@ const TeamSelection = props =>{
           const Leagues=response.data.data.teams.map((value)=>{
             return value
           })
-          setLeagues([...leagues,Leagues])
+          setLeagues([...leagues,...Leagues])
         })
         .catch(function (error) {
           // handle error
@@ -51,7 +51,7 @@ const TeamSelection = props =>{
                 }
                 </div>
             </div>
-            <div className='wrapper'>
+            {/*<div className='wrapper'>
                 <div  className="wrap">
                 {currentLeague.pes_teams.map((team ,index)=>{
                         return(
@@ -70,8 +70,8 @@ const TeamSelection = props =>{
                     })
                 }
                 </div>
-            </div>
-            <button id='btn'>تایید</button>
+            </div>*/}
+            <button id='btn' onClick={()=>console.log(leagues)}>تایید</button>
         </div>
     )
 }
