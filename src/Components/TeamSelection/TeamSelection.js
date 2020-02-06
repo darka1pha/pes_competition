@@ -3,10 +3,11 @@ import './TeamSelection.scss'
 import axios from 'axios'
 const TeamSelection = props =>{
     const [leagues,setLeagues]=useState([])
-    const [currentLeague,setCurrentLeague]=useState({})
+    //const [currentLeague,setCurrentLeague]=useState({})
     const[LeagueTeams,setLeagueTeams]=useState()
     const [SelectedTeam,setSelectedTeam]=useState()
     const [SelectedTeams,setSelectedTeams]=useState([])
+    const [teamName,setTeamName]=useState('')
 
     useEffect(()=>{
         //get league
@@ -29,7 +30,7 @@ const TeamSelection = props =>{
         for(var i=0;i<leagues.length;i++){
             if(leagues[i].name===event.target.value)
             {
-                setCurrentLeague(leagues[i])
+                //setCurrentLeague(leagues[i])
                 setLeagueTeams(leagues[i].pes_teams)
             }
         }
@@ -46,17 +47,25 @@ const TeamSelection = props =>{
 
     const onAddTeam=(event)=>{
         event.preventDefault()
-        if(SelectedTeam!==undefined)
+        if(SelectedTeam!==undefined&&SelectedTeams.length<3)
         {
             setSelectedTeams([...SelectedTeams,SelectedTeam])
         }
-        else (alert('Please select a Team'))
-        
+        else if(SelectedTeams.length=3)
+        {
+            alert('شما سه تیم خود را انتخاب کرده اید')
+        }
+        else (alert('لطفا یک تیم را انتخاب کنید'))
     }
+
+    const onTeamNameChange = (event)=>{
+        setTeamName(event.target.value)
+    }
+
     const onConfirmAndPayment=(event)=>{
         event.preventDefault()
         console.log(SelectedTeams)
-        
+        console.log(teamName)
     }
     return(
         <div id='all'>
@@ -111,7 +120,7 @@ const TeamSelection = props =>{
             <form class="black-80">
                 <div class="measure w5">
                     <label for="name" class="f3 b db mb2">نام تیم</label>
-                    <input id="name" class="f3 input-reset ba b--black-20 pa2 mb2 db w-100" type="text" aria-describedby="name-desc"/>
+                    <input value={teamName} onChange={(event)=>onTeamNameChange(event)} id="name" class="f3 input-reset ba b--black-20 pa2 mb2 db w-100" type="text" aria-describedby="name-desc"/>
                     <small id="name-desc" class="f5 fw9 black-60 db mb2">نام تیم شما در مسابقات</small>
                 </div>
             </form>
