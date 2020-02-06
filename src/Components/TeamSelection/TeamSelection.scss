@@ -30,18 +30,25 @@
     font-weight: normal;
     line-height: 1.4;
     height: 48vh;
-    width: 100%;
+    width: 40%;
     margin: 0;
     padding: 0;
+    
+
 }
 #all{
-    position: absolute;
-    top: 50%;
-	left: 50%;
-    transform: translate(-50%,-50%);
-    width: 70%;
-    margin-top: 40px;
-    margin-bottom: 40px;
+        margin-top: 10%;
+        display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		height: 100%;
+		width: 100%;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%,-50%);
+		border: none;
 }
 
 .wrap {
@@ -49,9 +56,9 @@
     width: 100%;
     position: relative;
     overflow: hidden;
-    background: #120103;
+    background: #7e7e7e;
     color: #fff;
-    text-align: center;
+    
 }
 
 header {
@@ -107,16 +114,48 @@ header label:hover {
         transition: all .5s .5s;
     }
 }
-#btn{
+
+//slider 2
+[id^="Aslide"]:checked + .slide {
+    left: 0;
+    z-index: 100;
+    transition: left .65s ease-out;
+    
+    & h1 {
+        opacity: 1;
+        transform: translateY(0);
+        transition: all .5s .5s;
+    }
+}
+
+
+
+#btn1{
     color: white;
-	height: 55px;
-	width: 20%;
+	height: 40px;
+    width: 8%;
+    padding: 10px;
     background-color: #FF4B2B;
-    font-size: 30px;
+    font-size: 15px;
 	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 	font-weight: bold;
 	border: none;
 	outline: none;
     cursor: pointer;
+    margin: 5px;
+}
+#btn2{
+    color: white;
+	height: 40px;
+    width: 8%;
+    padding: 10px;
+    background-color: #FF4B2B;
+    font-size: 15px;
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+	font-weight: bold;
+	border: none;
+	outline: none;
+    cursor: pointer;
+    margin: 5px;
 }
 

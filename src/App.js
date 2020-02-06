@@ -8,7 +8,7 @@ import TeamSelection from './Components/TeamSelection/TeamSelection'
 
 function App() {
   return (
-    <Router>
+    <Router basename='/'>
       <div className="App">
         <Switch>
           <Route path='/' exact component={Home} />
