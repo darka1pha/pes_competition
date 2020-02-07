@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import './Home.css'
 import NavBar from '../NavBar/NavBar'
 import Countdown from 'react-countdown-now'
@@ -6,6 +6,7 @@ import {Link} from 'react-router-dom'
 
 const Home = props =>{
     const Completionist = () => <span>You are good to go!</span>;
+    const [isloaded,setIsloaded]=useState(false)
     const renderer = ({ days,hours, minutes, seconds, completed }) => {
         if (completed) {
           // Render a completed state

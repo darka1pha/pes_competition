@@ -1,7 +1,8 @@
-import React , {useState} from 'react'
+import React , {useState , useEffect} from 'react'
 import './Register.css'
 import axios from 'axios'
 import {useHistory} from 'react-router-dom'
+import Loading from '../Loading/Loading'
 
 const Register = props =>{
     const history=useHistory()
@@ -61,10 +62,12 @@ const Register = props =>{
     const national_code_user2_change=event=>{
         setUser2({...user2,national_code:event.target.value})
     }
+    const [isLoading,setIsLoading]=useState(false)
 
 //Confirm Data
 const onConfirmPress=()=>{
     //post user data
+    setIsLoading(true)
     axios.post('https://amir7amiri.ir/pes/api/user/register' ,{
         //user1
         user1_name:user1.name ,
@@ -91,39 +94,43 @@ const onConfirmPress=()=>{
     })
     .catch(function(err){
         console.log(err)
+        setIsLoading(false)
     })
 
 }
 
     return(
-        <div class='register-wrapper'>
-        <div class="container">
-            <div class="form-container sign-in-container">
-                <form action="#">
-                    <h1>بازیکن شماره 1</h1>
-                    <input value={user1.name} onChange={(event)=>name_user1_change(event)} type="text" placeholder="نام"/>
-                    <input value={user1.lastname} onChange={(event)=>lastname_user1_change(event)} type="text" placeholder="نام خانوادگی"/>
-                    <input value={user1.st_number} onChange={(event)=>st_number_user1_change(event)} type="text" placeholder="شماره دانشجویی"/>
-                    <input value={user1.field} onChange={(event)=>field_user1_change(event)} type="text" placeholder="رشته"/>
-                    <input value={user1.national_code} onChange={(event)=>national_code_user1_change(event)} type="text" placeholder="شماره ملی"/>
-                    <input value={user1.phone_number} onChange={(event)=>phone_number_user1_change(event)} type="text" placeholder="شماره تلفن"/>
-                </form>
-            </div>
-            <div class="overlay-container">
-                <div class="overlay">
-                    <form class="overlay-panel overlay-right">
-                            <h1>بازیکن شماره 2</h1>
-                            <input value={user2.name} onChange={(event)=>name_user2_change(event)} type="text" placeholder="نام"/>
-                            <input value={user2.lastname} onChange={(event)=>lastname_user2_change(event)}  type="text" placeholder="نام خانوادگی"/>
-                            <input value={user2.st_number} onChange={(event)=>st_number_user2_change(event)} type="text" placeholder="شماره دانشجویی"/>
-                            <input value={user2.field} onChange={(event)=>field_user2_change(event)} type="text" placeholder="رشته"/>
-                            <input value={user2.national_code} onChange={(event)=>national_code_user2_change(event)} type="text" placeholder="شماره ملی"/>
-                            <input value={user2.phone_number} onChange={(event)=>phone_number_user2_change(event)} type="text" placeholder="شماره تلفن"/>
-                    </form>
+        <div>
+            {isLoading&&(<Loading size={250}/>)}
+            {!isLoading&&(<div class='register-wrapper'>
+                <div class="container">
+                    <div class="form-container sign-in-container">
+                        <form action="#">
+                            <h1>بازیکن شماره 1</h1>
+                            <input value={user1.name} onChange={(event)=>name_user1_change(event)} type="text" placeholder="نام"/>
+                            <input value={user1.lastname} onChange={(event)=>lastname_user1_change(event)} type="text" placeholder="نام خانوادگی"/>
+                            <input value={user1.st_number} onChange={(event)=>st_number_user1_change(event)} type="text" placeholder="شماره دانشجویی"/>
+                            <input value={user1.field} onChange={(event)=>field_user1_change(event)} type="text" placeholder="رشته"/>
+                            <input value={user1.national_code} onChange={(event)=>national_code_user1_change(event)} type="text" placeholder="شماره ملی"/>
+                            <input value={user1.phone_number} onChange={(event)=>phone_number_user1_change(event)} type="text" placeholder="شماره تلفن"/>
+                        </form>
+                    </div>
+                    <div class="overlay-container">
+                        <div class="overlay">
+                            <form class="overlay-panel overlay-right">
+                                    <h1>بازیکن شماره 2</h1>
+                                    <input value={user2.name} onChange={(event)=>name_user2_change(event)} type="text" placeholder="نام"/>
+                                    <input value={user2.lastname} onChange={(event)=>lastname_user2_change(event)}  type="text" placeholder="نام خانوادگی"/>
+                                    <input value={user2.st_number} onChange={(event)=>st_number_user2_change(event)} type="text" placeholder="شماره دانشجویی"/>
+                                    <input value={user2.field} onChange={(event)=>field_user2_change(event)} type="text" placeholder="رشته"/>
+                                    <input value={user2.national_code} onChange={(event)=>national_code_user2_change(event)} type="text" placeholder="شماره ملی"/>
+                                    <input value={user2.phone_number} onChange={(event)=>phone_number_user2_change(event)} type="text" placeholder="شماره تلفن"/>
+                            </form>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-            <button className='grow' onClick={()=>{onConfirmPress()}} id='confirm-register'>تایید</button>
+                <button className='grow' onClick={()=>{onConfirmPress()}} id='confirm-register'>تایید</button>
+            </div>)}
         </div>
     )
 }

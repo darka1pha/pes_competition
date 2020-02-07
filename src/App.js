@@ -8,15 +8,16 @@ import TeamSelection from './Components/TeamSelection/TeamSelection'
 
 function App() {
   return (
-    <Router basename='/'>
+    <Router basename='/pescomp'>
       <div className="App">
         <Switch>
           <Route path='/' exact component={Home} />
           <Route path='/register' component={Register}/>
-          <Route path='/team_selection/' component={TeamSelection}/>
+          <Route path='/team_selection' component={TeamSelection}/>
         </Switch>
       </div>
-    </Router>
+  </Router>
+  
   );
 }
 

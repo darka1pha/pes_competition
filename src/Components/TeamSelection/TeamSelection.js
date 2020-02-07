@@ -1,6 +1,7 @@
 import React , {useState,useEffect} from 'react'
 import './TeamSelection.scss'
 import axios from 'axios'
+import Loading from '../Loading/Loading'
 const TeamSelection = props =>{
     const [leagues,setLeagues]=useState([])
     //const [currentLeague,setCurrentLeague]=useState({})
@@ -8,7 +9,7 @@ const TeamSelection = props =>{
     const [SelectedTeam,setSelectedTeam]=useState()
     const [SelectedTeams,setSelectedTeams]=useState([])
     const [teamName,setTeamName]=useState('')
-
+    const [isLoading,setIsLoading]=useState(true)
     useEffect(()=>{
         //get league
         axios.get('https://amir7amiri.ir/pes/api/pesteams/get/all')
@@ -18,6 +19,7 @@ const TeamSelection = props =>{
             return value
           })
           setLeagues([...leagues,...Leagues])
+          setIsLoading(false)
         })
         .catch(function (error) {
           // handle error
@@ -63,70 +65,90 @@ const TeamSelection = props =>{
     }
 
     const onConfirmAndPayment=(event)=>{
+        setIsLoading(true)
         event.preventDefault()
-        console.log(SelectedTeams)
-        console.log(teamName)
+        if(SelectedTeams.length===3){
+            axios.post('https://amir7amiri.ir/pes/api/team/register', {
+            id: localStorage.getItem('teamid'),
+            team_name: teamName,
+            pes1team: SelectedTeams[0],
+            pes2team: SelectedTeams[1],
+            pes3team: SelectedTeams[2]
+          })
+          .then(function (response) {
+            console.log(response.data);
+          })
+          .catch(function (error) {
+            console.log(error);
+            setIsLoading(false)
+          });
+        }
+        else if(teamName==='') alert('لطفا نام تیم خود را وارد کنید')
+        else alert("لطفا تیم های خود را انتخاب کنید")
     }
     return(
-        <div id='all'>
-            <div className='wrapper'>
+        <div>
+            {isLoading&&(<Loading size={200}/>)}
+            {!isLoading&&(<div id='all'>
+                <div className='wrapper'>
+                    <div  className="wrap">
+                    {leagues.map((league ,index)=>{
+                            return(
+                                <div key={index}>
+                                    <header>
+                                    {
+                                        leagues.map((league,index)=>{
+                                            return(<label key={index} for={'Aslide-'+index+'-trigger'}>{league.name}</label>)
+                                        })
+                                    }
+                                    </header>
+                                    <input value={league.name} onChange={(event)=>selectedLeague(event)} id={'Aslide-'+index+'-trigger'} type="radio" name="slides"/>
+                                    <section style ={ { backgroundImage: "url("+league.logo_path+")"} }  className="slide">
+                                        <h1 id='hdr'>{league.name}</h1>   
+                                    </section>
+                                </div>
+                            )
+                        })
+                    }
+                    </div>
+                </div>
+                <div className='wrapper'>
                 <div  className="wrap">
-                {leagues.map((league ,index)=>{
-                        return(
-                            <div key={index}>
-                                <header>
-                                {
-                                    leagues.map((league,index)=>{
-                                        return(<label key={index} for={'Aslide-'+index+'-trigger'}>{league.name}</label>)
-                                    })
-                                }
-                                </header>
-                                <input value={league.name} onChange={(event)=>selectedLeague(event)} id={'Aslide-'+index+'-trigger'} type="radio" name="slides"/>
-                                <section style ={ { backgroundImage: "url("+league.logo_path+")"} }  className="slide">
-                                    <h1 id='hdr'>{league.name}</h1>   
-                                </section>
-                            </div>
-                        )
-                    })
-                }
+                    {LeagueTeams&&LeagueTeams.map((team ,index)=>{
+                            return(
+                                <div key={index}>
+                                    <header>
+                                    {
+                                        LeagueTeams.map((team,index)=>{
+                                            return(<label key={index} for={'slide-'+index+'-trigger'}>{team.name}</label>)
+                                        })
+                                    }
+                                    </header>
+                                    <input value={team.name} onChange={(event)=>selectedTeam(event)} id={'slide-'+index+'-trigger'} type="radio" name="slides"/>
+                                    <section style ={ { backgroundImage: "url("+team.logo_path+")"} }  className="slide">
+                                        <h1 id='hdr'>{team.name}</h1>   
+                                    </section>
+                                </div>
+                            )
+                        })
+                    }
+                    </div>
                 </div>
-            </div>
-            <div className='wrapper'>
-            <div  className="wrap">
-                {LeagueTeams&&LeagueTeams.map((team ,index)=>{
-                        return(
-                            <div key={index}>
-                                <header>
-                                {
-                                    LeagueTeams.map((team,index)=>{
-                                        return(<label key={index} for={'slide-'+index+'-trigger'}>{team.name}</label>)
-                                    })
-                                }
-                                </header>
-                                <input value={team.name} onChange={(event)=>selectedTeam(event)} id={'slide-'+index+'-trigger'} type="radio" name="slides"/>
-                                <section style ={ { backgroundImage: "url("+team.logo_path+")"} }  className="slide">
-                                    <h1 id='hdr'>{team.name}</h1>   
-                                </section>
-                            </div>
-                        )
-                    })
-                }
-                </div>
-            </div>
-            <form class="pa4 w-100">
-                <button className="grow" id='btn1' onClick={(event)=>{onAddTeam(event)}}>افزودن تیم</button>
-                <small class="f5 fw9 black-60 db mb2">سه تیم اول انخاب شده ثبت میشوند</small>
-            </form>
-            <form class="black-80">
-                <div class="measure w5">
-                    <label for="name" class="f3 b db mb2">نام تیم</label>
-                    <input value={teamName} onChange={(event)=>onTeamNameChange(event)} id="name" class="f3 input-reset ba b--black-20 pa2 mb2 db w-100" type="text" aria-describedby="name-desc"/>
-                    <small id="name-desc" class="f5 fw9 black-60 db mb2">نام تیم شما در مسابقات</small>
-                </div>
-            </form>
-            <form class="pa4 black-80 w-100">
-                <button id='btn2' onClick={(event)=>{onConfirmAndPayment(event)}}>تایید و پرداخت</button>
-            </form>
+                <form class="pa4 w-100">
+                    <button className="grow" id='btn1' onClick={(event)=>{onAddTeam(event)}}>افزودن تیم</button>
+                    <small class="f5 fw9 black-60 db mb2">سه تیم اول انخاب شده ثبت میشوند</small>
+                </form>
+                <form class="black-80">
+                    <div class="measure w5">
+                        <label for="name" class="f3 b db mb2">نام تیم</label>
+                        <input value={teamName} onChange={(event)=>onTeamNameChange(event)} id="name" class="f3 input-reset ba b--black-20 pa2 mb2 db w-100" type="text" aria-describedby="name-desc"/>
+                        <small id="name-desc" class="f5 fw9 black-60 db mb2">نام تیم شما در مسابقات</small>
+                    </div>
+                </form>
+                <form class="pa4 black-80 w-100">
+                    <button id='btn2' onClick={(event)=>{onConfirmAndPayment(event)}}>تایید و پرداخت</button>
+                </form>
+            </div>)}
         </div>
     )
 }
