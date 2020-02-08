@@ -93,7 +93,6 @@ form {
 .overlay-right {
 	right: 0;
 }
-
 @media (max-width: 575.98px) { 
 	#bgr{
 		overflow-y:scroll;
@@ -198,7 +197,6 @@ form {
 		margin-bottom: 40px;
 	}
  }
-
 @media (min-width: 576px) and (max-width: 767.98px) {  
 	#txt{
 		margin: 5%;
@@ -396,7 +394,6 @@ form {
 		margin-bottom: 40px;
 	} 
 }
-
 @media (min-width: 1200px) { 
 	#txt{
 		margin-top: 5%;

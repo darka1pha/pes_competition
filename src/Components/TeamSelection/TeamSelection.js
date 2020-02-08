@@ -63,7 +63,6 @@ const TeamSelection = props =>{
     const onTeamNameChange = (event)=>{
         setTeamName(event.target.value)
     }
-
     const onConfirmAndPayment=(event)=>{
         setIsLoading(true)
         event.preventDefault()
