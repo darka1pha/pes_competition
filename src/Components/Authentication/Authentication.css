@@ -1,0 +1,327 @@
+.Resendtxt{
+    font-size: 18px;
+    font-weight: bold;
+    color: rgb(77, 77, 77);
+}
+.ResendtxtLink{
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    color: rgb(77, 77, 77);
+    text-decoration: underline;
+}
+.resendContainer{
+    margin-bottom: 40px;
+    margin-top: 20px;
+}
+.txtContainer{
+    font-size: 15px;
+    font-weight: bold;
+    color: rgb(88, 88, 88);
+}
+@media (max-width: 575.98px) { 
+    .Resendtxt{
+        font-size: 16px;
+        font-weight: bold;
+        color: rgb(77, 77, 77);
+    }
+    .ResendtxtLink{
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        color: rgb(77, 77, 77);
+        text-decoration: underline;
+    }
+    .txtContainer{
+        font-size: 12px;
+        font-weight: bold;
+        color: rgb(88, 88, 88);
+    }
+    .allInputs{
+        margin: 40px 5px 20px 5px;
+        height: 30px;
+        width: 30px;
+        background-color: rgb(240, 240, 240);
+        outline: none;
+        border: none;
+        border-bottom-style: solid;
+        border-bottom-color: rgb(187, 187, 187);
+        border-bottom-width: 2px;
+        text-align: center;
+        font-weight: bold;
+        transition: ease 0.8s;
+    }
+    .allInputs:focus{
+        border-bottom-color: rgb(255, 75, 75);
+    }
+    .conBtnActive{
+            color: rgb(255, 255, 255);
+            background-color:rgb(148, 148, 148);
+            height: 40px;
+            width: 80px;
+            font-size: 18px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-weight: bold;
+            border: none;
+            outline: none;
+            border-radius: 100px;
+            cursor: pointer;
+            transition: ease 1s;
+    }
+    .conBtnDeactive{
+        color: rgb(255, 255, 255);
+        background-color:rgb(148, 148, 148);
+        height: 40px;
+        width: 80px;
+        font-size: 18px;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-weight: bold;
+        border: none;
+        outline: none;
+        border-radius: 100px;
+    }
+    .conBtnActive:focus{
+        background-color:#FF416C;
+    }
+    .img{
+        height: 150px;
+        width: 150px;
+    }
+
+ }
+
+
+@media (min-width: 576px) and (max-width: 767.98px) { 
+    .Resendtxt{
+        font-size: 17px;
+        font-weight: bold;
+        color: rgb(77, 77, 77);
+    }
+    .ResendtxtLink{
+        font-size: 17px;
+        font-weight: bold;
+        cursor: pointer;
+        color: rgb(77, 77, 77);
+        text-decoration: underline;
+    }
+    .txtContainer{
+        font-size: 13px;
+        font-weight: bold;
+        color: rgb(88, 88, 88);
+    }
+    .allInputs{
+        margin: 40px 5px 20px 5px;
+        height: 35px;
+        width: 35px;
+        background-color: rgb(240, 240, 240);
+        outline: none;
+        border: none;
+        border-bottom-style: solid;
+        border-bottom-color: rgb(187, 187, 187);
+        border-bottom-width: 2px;
+        text-align: center;
+        font-weight: bold;
+        transition: ease 0.8s;
+    }
+    .allInputs:focus{
+        border-bottom-color: rgb(255, 75, 75);
+    }
+    .conBtnActive{
+            color: rgb(255, 255, 255);
+            background-color:rgb(148, 148, 148);
+            height: 50px;
+            width: 90px;
+            font-size: 20px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-weight: bold;
+            border: none;
+            outline: none;
+            border-radius: 100px;
+            cursor: pointer;
+            transition: ease 1s;
+    }
+    .conBtnDeactive{
+        color: rgb(255, 255, 255);
+        background-color:rgb(148, 148, 148);
+        height: 45px;
+        width: 90px;
+        font-size: 20px;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-weight: bold;
+        border: none;
+        outline: none;
+        border-radius: 100px;
+    }
+    .conBtnActive:focus{
+        background-color:#FF416C;
+    }
+    .img{
+        height: 180px;
+        width: 180px;
+    }
+
+ }
+
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .allInputs{
+        margin: 40px 5px 20px 5px;
+        height: 35px;
+        width: 35px;
+        background-color: rgb(240, 240, 240);
+        outline: none;
+        border: none;
+        border-bottom-style: solid;
+        border-bottom-color: rgb(187, 187, 187);
+        border-bottom-width: 2px;
+        text-align: center;
+        font-weight: bold;
+        transition: ease 0.8s;
+    }
+    .allInputs:focus{
+        border-bottom-color: rgb(255, 75, 75);
+    }
+    .conBtnActive{
+            color: rgb(255, 255, 255);
+            background-color:rgb(148, 148, 148);
+            height: 50px;
+            width: 90px;
+            font-size: 20px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-weight: bold;
+            border: none;
+            outline: none;
+            border-radius: 100px;
+            cursor: pointer;
+            transition: ease 1s;
+    }
+    .conBtnDeactive{
+        color: rgb(255, 255, 255);
+        background-color:rgb(148, 148, 148);
+        height: 45px;
+        width: 90px;
+        font-size: 20px;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-weight: bold;
+        border: none;
+        outline: none;
+        border-radius: 100px;
+    }
+    .conBtnActive:focus{
+        background-color:#FF416C;
+    }
+    .img{
+        height: 180px;
+        width: 180px;
+    }  
+
+}
+
+
+@media (min-width: 992px) and (max-width: 1199.98px) { 
+    .allInputs{
+        margin: 40px 5px 20px 5px;
+        height: 35px;
+        width: 35px;
+        background-color: rgb(240, 240, 240);
+        outline: none;
+        border: none;
+        border-bottom-style: solid;
+        border-bottom-color: rgb(187, 187, 187);
+        border-bottom-width: 2px;
+        text-align: center;
+        font-weight: bold;
+        transition: ease 0.8s;
+    }
+    .allInputs:focus{
+        border-bottom-color: rgb(255, 75, 75);
+    }
+    .conBtnActive{
+            color: rgb(255, 255, 255);
+            background-color:rgb(148, 148, 148);
+            height: 50px;
+            width: 90px;
+            font-size: 20px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-weight: bold;
+            border: none;
+            outline: none;
+            border-radius: 100px;
+            cursor: pointer;
+            transition: ease 1s;
+    }
+    .conBtnDeactive{
+        color: rgb(255, 255, 255);
+        background-color:rgb(148, 148, 148);
+        height: 45px;
+        width: 90px;
+        font-size: 20px;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-weight: bold;
+        border: none;
+        outline: none;
+        border-radius: 100px;
+    }
+    .conBtnActive:focus{
+        background-color:#FF416C;
+    }
+    .img{
+        height: 180px;
+        width: 180px;
+    }
+
+}
+
+
+@media (min-width: 1200px) { 
+    .allInputs{
+        margin: 40px 5px 20px 5px;
+        height: 35px;
+        width: 35px;
+        background-color: rgb(240, 240, 240);
+        outline: none;
+        border: none;
+        border-bottom-style: solid;
+        border-bottom-color: rgb(187, 187, 187);
+        border-bottom-width: 2px;
+        text-align: center;
+        font-weight: bold;
+        transition: ease 0.8s;
+    }
+    .allInputs:focus{
+        border-bottom-color: rgb(255, 75, 75);
+    }
+    .conBtnActive{
+            color: rgb(255, 255, 255);
+            background-color:rgb(148, 148, 148);
+            height: 50px;
+            width: 90px;
+            font-size: 20px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-weight: bold;
+            border: none;
+            outline: none;
+            border-radius: 100px;
+            cursor: pointer;
+            transition: ease 1s;
+    }
+    .conBtnDeactive{
+        color: rgb(255, 255, 255);
+        background-color:rgb(148, 148, 148);
+        height: 45px;
+        width: 90px;
+        font-size: 20px;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-weight: bold;
+        border: none;
+        outline: none;
+        border-radius: 100px;
+    }
+    .conBtnActive:focus{
+        background-color:#FF416C;
+    }
+    .img{
+        height: 180px;
+        width: 180px;
+    }
+ }

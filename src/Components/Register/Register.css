@@ -1,5 +1,5 @@
 * {
-    box-sizing: border-box;
+	box-sizing: border-box;
 }
 #center{
 		height: 25vh;
@@ -10,15 +10,109 @@
 		transform: translate(-50%,-50%);
 		align-content: center;
 }
+#bgr{
+	height: 110vh;
+	background-image: url('./11.png');
+	width: 100%;
+	background-size:100% 100%;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+h1{
+	margin-bottom: 20px;
+}
+.form-container {
+	position: absolute;
+	top: 0;
+	height: 100%;
+	transition: all 0.6s ease-in-out;
+}
+.sign-in-container {
+	left: 0;
+	width: 50%;
+	z-index: 2;
+}
+.overlay-container {
+	position: absolute;
+	top: 0;
+	left: 50%;
+	width: 50%;
+	height: 100%;
+	overflow: hidden;
+	transition: transform 0.6s ease-in-out;
+	z-index: 100;
+}
+.container.right-panel-active .overlay-container{
+	transform: translateX(-100%);
+}
+.overlay {
+	color: #FFFFFF;
+	position: relative;
+	left: -100%;
+	height: 100%;
+	width: 200%;
+}
+form {
+	background-color: #FFFFFF;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	padding: 0 50px;
+	height: 100%;
+	text-align: center;
+	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.overlay-panel {
+	position: absolute;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	padding: 0 40px;
+	text-align: center;
+	top: 0;
+	height: 100%;
+	width: 50%;
+	background: linear-gradient(to right, #FF4B2B, #FF416C);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: 0 0;
+}
+.container {
+	background-color: #fff;
+	border-radius: 10px;
+	  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+			0 10px 10px rgba(0,0,0,0.22);
+	position: relative;
+	overflow: hidden;
+	width: 768px;
+	max-width: 100%;
+	min-height: 480px;
+}
+.overlay-right {
+	right: 0;
+}
+
 @media (max-width: 575.98px) { 
+	#bgr{
+		overflow-y:scroll;
+		height:100vh;
+		background-image: url('./11.png');
+		height: 100vh;
+		width: 100%;
+		background-size:220% 100%;
+		background-position: center;
+		background-repeat: no-repeat;
+	}
 	.register-wrapper{
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		flex-direction: column;
-		height: 90%;
 		width: 85%;
-		position: absolute;
+		height: 100vh;
+		position: relative;
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%,-50%);
@@ -40,22 +134,27 @@
 		text-align: center;
 		font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 	}
-	
-	input {
+	.input {
 		background-color: #eee;
 		border: none;
 		padding: 12px 15px;
 		margin: 8px;
 		outline: none;
 		width: 90%;
-		font-size: 12px;
+		font-size: 11px;
 		font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 		transition:  0.3s;
 	}
-	input:focus{
+	.input:focus{
 		transform: scale(1.1);
 	}
-	
+	#txt{
+		margin: 10%;
+		font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+		font-size: 35px;
+		font-weight: bold;
+		color: white;
+	}
 	.container {
 		background-color: #fff;
 		border-radius: 10px;
@@ -65,40 +164,7 @@
 		overflow: hidden;
 		width: 768px;
 		max-width: 100%;
-		min-height: 400px;
-	}
-	
-	.form-container {
-		position: absolute;
-		top: 0;
-		height: 100%;
-		transition: all 0.6s ease-in-out;
-	}
-	
-	.sign-in-container {
-		left: 0;
-		width: 50%;
-		z-index: 2;
-	}
-	.overlay-container {
-		position: absolute;
-		top: 0;
-		left: 50%;
-		width: 50%;
-		height: 100%;
-		overflow: hidden;
-		transition: transform 0.6s ease-in-out;
-		z-index: 100;
-	}
-	.container.right-panel-active .overlay-container{
-		transform: translateX(-100%);
-	}
-	.overlay {
-		color: #FFFFFF;
-		position: relative;
-		left: -100%;
-		height: 100%;
-		width: 200%;
+		min-height: 450px;
 	}
 	.overlay-panel {
 		position: absolute;
@@ -116,18 +182,11 @@
 		background-size: cover;
 		background-position: 0 0;
 	}
-	
-	.overlay-right {
-		right: 0;
-	}
-	h1{
-		margin-bottom: 20px;
-	}
 	#confirm-register{
-		color: white;
+		color: #FF416C;
+		background-color: rgb(255, 255, 255);
 		height: 40px;
-		width: 70px;
-		background-color: #FF4B2B;
+		width: 70px;		
 		margin-top: 40px;
 		font-size: 18px;
 		font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -136,11 +195,18 @@
 		outline: none;
 		border-radius: 50% 20% / 10% 40%;
 		cursor: pointer;
+		margin-bottom: 40px;
 	}
-
  }
 
 @media (min-width: 576px) and (max-width: 767.98px) {  
+	#txt{
+		margin: 5%;
+		font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+		font-size: 40px;
+		font-weight: bold;
+		color: white;
+	}
 	.register-wrapper{
 		display: flex;
 		justify-content: center;
@@ -170,65 +236,19 @@
 		text-align: center;
 		font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 	}
-	
-	input {
+	.input {
 		background-color: #eee;
 		border: none;
 		padding: 12px 15px;
 		margin: 8px;
 		outline: none;
 		width: 90%;
-		font-size: 15px;
+		font-size: 14px;
 		font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 		transition:  0.3s;
 	}
-	input:focus{
+	.input:focus{
 		transform: scale(1.1);
-	}
-	
-	.container {
-		background-color: #fff;
-		border-radius: 10px;
-		  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
-				0 10px 10px rgba(0,0,0,0.22);
-		position: relative;
-		overflow: hidden;
-		width: 768px;
-		max-width: 100%;
-		min-height: 480px;
-	}
-	
-	.form-container {
-		position: absolute;
-		top: 0;
-		height: 100%;
-		transition: all 0.6s ease-in-out;
-	}
-	
-	.sign-in-container {
-		left: 0;
-		width: 50%;
-		z-index: 2;
-	}
-	.overlay-container {
-		position: absolute;
-		top: 0;
-		left: 50%;
-		width: 50%;
-		height: 100%;
-		overflow: hidden;
-		transition: transform 0.6s ease-in-out;
-		z-index: 100;
-	}
-	.container.right-panel-active .overlay-container{
-		transform: translateX(-100%);
-	}
-	.overlay {
-		color: #FFFFFF;
-		position: relative;
-		left: -100%;
-		height: 100%;
-		width: 200%;
 	}
 	.overlay-panel {
 		position: absolute;
@@ -246,18 +266,11 @@
 		background-size: cover;
 		background-position: 0 0;
 	}
-	
-	.overlay-right {
-		right: 0;
-	}
-	h1{
-		margin-bottom: 20px;
-	}
 	#confirm-register{
-		color: white;
+		color: #FF416C;
+		background-color: rgb(255, 255, 255);
 		height: 50px;
 		width: 90px;
-		background-color: #FF4B2B;
 		margin-top: 40px;
 		font-size: 20px;
 		font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -266,10 +279,18 @@
 		outline: none;
 		border-radius: 50% 20% / 10% 40%;
 		cursor: pointer;
+		margin-bottom: 40px;
 	}
 }
 
 @media (min-width: 768px) and (max-width: 991.98px) { 
+	#txt{
+		margin: 5%;
+		font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+		font-size: 40px;
+		font-weight: bold;
+		color: white;
+	}
 	.register-wrapper{
 		display: flex;
 		justify-content: center;
@@ -288,105 +309,25 @@
 		margin: 0;
 		font-size: 26px;
 	}
-	form {
-		background-color: #FFFFFF;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		flex-direction: column;
-		padding: 0 50px;
-		height: 100%;
-		text-align: center;
-		font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-	}
-	
-	input {
+	.input {
 		background-color: #eee;
 		border: none;
 		padding: 12px 15px;
 		margin: 8px 0;
 		outline: none;
 		width: 90%;
-		font-size: 15px;
+		font-size: 14px;
 		font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 		transition:  0.3s;
 	}
-	input:focus{
+	.input:focus{
 		transform: scale(1.1);
 	}
-	
-	.container {
-		background-color: #fff;
-		border-radius: 10px;
-		  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
-				0 10px 10px rgba(0,0,0,0.22);
-		position: relative;
-		overflow: hidden;
-		width: 768px;
-		max-width: 100%;
-		min-height: 480px;
-	}
-	
-	.form-container {
-		position: absolute;
-		top: 0;
-		height: 100%;
-		transition: all 0.6s ease-in-out;
-	}
-	
-	.sign-in-container {
-		left: 0;
-		width: 50%;
-		z-index: 2;
-	}
-	.overlay-container {
-		position: absolute;
-		top: 0;
-		left: 50%;
-		width: 50%;
-		height: 100%;
-		overflow: hidden;
-		transition: transform 0.6s ease-in-out;
-		z-index: 100;
-	}
-	.container.right-panel-active .overlay-container{
-		transform: translateX(-100%);
-	}
-	.overlay {
-		color: #FFFFFF;
-		position: relative;
-		left: -100%;
-		height: 100%;
-		width: 200%;
-	}
-	.overlay-panel {
-		position: absolute;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		flex-direction: column;
-		padding: 0 40px;
-		text-align: center;
-		top: 0;
-		height: 100%;
-		width: 50%;
-		background: linear-gradient(to right, #FF4B2B, #FF416C);
-		background-repeat: no-repeat;
-		background-size: cover;
-		background-position: 0 0;
-	}
-	
-	.overlay-right {
-		right: 0;
-	}
-	h1{
-		margin-bottom: 20px;
-	}
 	#confirm-register{
-		color: white;
+		color: #FF416C;
+		background-color: rgb(255, 255, 255);
 		height: 50px;
 		width: 90px;
-		background-color: #FF4B2B;
 		margin-top: 40px;
 		font-size: 20px;
 		font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -395,11 +336,18 @@
 		outline: none;
 		border-radius: 50% 20% / 10% 40%;
 		cursor: pointer;
+		margin-bottom: 40px;
 	}
-
 }
 
 @media (min-width: 992px) and (max-width: 1199.98px) { 
+	#txt{
+		margin: 5%;
+		font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+		font-size: 40px;
+		font-weight: bold;
+		color: white;
+	}
 	.register-wrapper{
 		display: flex;
 		justify-content: center;
@@ -418,105 +366,25 @@
 		margin: 0;
 		font-size: 30px;
 	}
-	form {
-		background-color: #FFFFFF;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		flex-direction: column;
-		padding: 0 50px;
-		height: 100%;
-		text-align: center;
-		font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-	}
-	
-	input {
+	.input {
 		background-color: #eee;
 		border: none;
 		padding: 12px 15px;
 		margin: 8px 0;
 		outline: none;
 		width: 80%;
-		font-size: 15px;
+		font-size: 14px;
 		font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 		transition:  0.3s;
 	}
-	input:focus{
+	.input:focus{
 		transform: scale(1.1);
 	}
-	
-	.container {
-		background-color: #fff;
-		border-radius: 10px;
-		  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
-				0 10px 10px rgba(0,0,0,0.22);
-		position: relative;
-		overflow: hidden;
-		width: 768px;
-		max-width: 100%;
-		min-height: 480px;
-	}
-	
-	.form-container {
-		position: absolute;
-		top: 0;
-		height: 100%;
-		transition: all 0.6s ease-in-out;
-	}
-	
-	.sign-in-container {
-		left: 0;
-		width: 50%;
-		z-index: 2;
-	}
-	.overlay-container {
-		position: absolute;
-		top: 0;
-		left: 50%;
-		width: 50%;
-		height: 100%;
-		overflow: hidden;
-		transition: transform 0.6s ease-in-out;
-		z-index: 100;
-	}
-	.container.right-panel-active .overlay-container{
-		transform: translateX(-100%);
-	}
-	.overlay {
-		color: #FFFFFF;
-		position: relative;
-		left: -100%;
-		height: 100%;
-		width: 200%;
-	}
-	.overlay-panel {
-		position: absolute;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		flex-direction: column;
-		padding: 0 40px;
-		text-align: center;
-		top: 0;
-		height: 100%;
-		width: 50%;
-		background: linear-gradient(to right, #FF4B2B, #FF416C);
-		background-repeat: no-repeat;
-		background-size: cover;
-		background-position: 0 0;
-	}
-	
-	.overlay-right {
-		right: 0;
-	}
-	h1{
-		margin-bottom: 20px;
-	}
 	#confirm-register{
-		color: white;
+		color: #FF416C;
+		background-color: rgb(255, 255, 255);
 		height: 50px;
 		width: 90px;
-		background-color: #FF4B2B;
 		margin-top: 40px;
 		font-size: 20px;
 		font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -525,11 +393,19 @@
 		outline: none;
 		border-radius: 50% 20% / 10% 40%;
 		cursor: pointer;
+		margin-bottom: 40px;
 	} 
-
 }
 
 @media (min-width: 1200px) { 
+	#txt{
+		margin-top: 5%;
+		margin-bottom: 5%;
+		font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+		font-size: 40px;
+		font-weight: bold;
+		color: white;
+	}
 	.register-wrapper{
 		display: flex;
 		justify-content: center;
@@ -547,105 +423,25 @@
 		font-weight: bold;
 		margin: 0;
 	}
-	form {
-		background-color: #FFFFFF;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		flex-direction: column;
-		padding: 0 50px;
-		height: 100%;
-		text-align: center;
-		font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-	}
-	
-	input {
+	.input {
 		background-color: #eee;
 		border: none;
 		padding: 12px 15px;
 		margin: 8px 0;
 		outline: none;
 		width: 80%;
-		font-size: 15px;
+		font-size: 14px;
 		font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 		transition:  0.3s;
 	}
-	input:focus{
+	.input:focus{
 		transform: scale(1.1);
 	}
-	
-	.container {
-		background-color: #fff;
-		border-radius: 10px;
-		  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
-				0 10px 10px rgba(0,0,0,0.22);
-		position: relative;
-		overflow: hidden;
-		width: 768px;
-		max-width: 100%;
-		min-height: 480px;
-	}
-	
-	.form-container {
-		position: absolute;
-		top: 0;
-		height: 100%;
-		transition: all 0.6s ease-in-out;
-	}
-	
-	.sign-in-container {
-		left: 0;
-		width: 50%;
-		z-index: 2;
-	}
-	.overlay-container {
-		position: absolute;
-		top: 0;
-		left: 50%;
-		width: 50%;
-		height: 100%;
-		overflow: hidden;
-		transition: transform 0.6s ease-in-out;
-		z-index: 100;
-	}
-	.container.right-panel-active .overlay-container{
-		transform: translateX(-100%);
-	}
-	.overlay {
-		color: #FFFFFF;
-		position: relative;
-		left: -100%;
-		height: 100%;
-		width: 200%;
-	}
-	.overlay-panel {
-		position: absolute;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		flex-direction: column;
-		padding: 0 40px;
-		text-align: center;
-		top: 0;
-		height: 100%;
-		width: 50%;
-		background: linear-gradient(to right, #FF4B2B, #FF416C);
-		background-repeat: no-repeat;
-		background-size: cover;
-		background-position: 0 0;
-	}
-	
-	.overlay-right {
-		right: 0;
-	}
-	h1{
-		margin-bottom: 20px;
-	}
 	#confirm-register{
-		color: white;
+		color: #FF416C;
+		background-color: rgb(255, 255, 255);
 		height: 55px;
 		width: 100px;
-		background-color: #FF4B2B;
 		margin-top: 40px;
 		font-size: 20px;
 		font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -654,6 +450,6 @@
 		outline: none;
 		border-radius: 50% 20% / 10% 40%;
 		cursor: pointer;
-		
+		margin-bottom: 40px;
 	}
  }

@@ -37,6 +37,7 @@ const Home = props =>{
 
     return(
         <div id='container'>
+            <div className='container2'>
             <NavBar/>
             <div id='wrapper'>
                 <div id='time-wrapper'>
@@ -53,6 +54,7 @@ const Home = props =>{
                     </text>     
                     <Link to='/register' className='grow' id='reg-btn'>ثبت نام</Link>              
                 </div>
+            </div>
             </div>
         </div>
     )
