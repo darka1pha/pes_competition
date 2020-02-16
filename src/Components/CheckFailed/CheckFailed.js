@@ -14,7 +14,7 @@ const CheckFailed=props=>{
                     </g>
                     </g>
                 </svg>
-                <text id='checkout'>پرداخت ناموفق بود</text>
+                <text style={{fontFamily:'Vazir-FD'}} id='checkout'>پرداخت ناموفق بود</text>
             </div>
         </div>
     )

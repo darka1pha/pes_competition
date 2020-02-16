@@ -7,7 +7,7 @@ const CheckSuccess = props =>{
             <span class="trigger scale"></span>
             <a href="#" class="button"><span class="checkmark"></span>
             </a>
-            <h1 class="text__success">پرداخت با موفقیت انجام شد</h1>
+            <h1 style={{fontFamily:'Vazir-FD'}} class="text__success">پرداخت با موفقیت انجام شد</h1>
         </div>
 
     )

@@ -1,0 +1,100 @@
+*{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+@import url(https://fonts.googleapis.com/css?family=Audiowide);
+//mixins
+@mixin bp($bp, $min-max: min-width) {
+    $em: $bp/16;
+    @media(#{$min-max}: #{$em}em) {
+        @content;
+    }
+}
+
+*,
+*:before,
+*:after  { box-sizing: inherit; }
+
+.Gwrap {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    background: #120103;
+    color: #fff;
+    text-align: center;
+}
+
+.GHeader {
+    background: #33144D;
+    box-shadow: 0 .5em 1em #111;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 900;
+    width: 100%;
+    
+    label {
+        color: #a2a9af;
+        cursor: pointer;
+        display: inline-block;
+        line-height: 4.25em;
+        font-size: .75em;
+        font-weight: bold;
+        padding: 0 1em;
+    }
+}
+
+.GHeader label:hover {
+    background: rgb(78, 35, 112);
+}
+
+.Gslide {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 100%;
+    z-index: 10;
+    padding:  8em 1em 0;
+    background-color: #120103;
+    background-position: 50% 50%;
+    background-size: cover;
+    transition: left 0s .75s;        
+    
+    &-one { background-image: url('http://amir7amiri.ir/PESLogos/Gallery/20190520_120659.jpg'); }
+
+    &-two { background-image: url('http://amir7amiri.ir/PESLogos/Gallery/20190520_120709.jpg'); }
+
+    &-three { background-image: url('http://amir7amiri.ir/PESLogos/Gallery/20190520_120735.jpg'); }
+
+    &-four { background-image: url('http://amir7amiri.ir/PESLogos/Gallery/20190520_173449.jpg'); }
+
+    &-five { background-image: url('http://amir7amiri.ir/PESLogos/Gallery/20190520_173458.jpg'); }
+
+    &-six { background-image: url('http://amir7amiri.ir/PESLogos/Gallery/20190523_132604.jpg'); }
+
+    &-seven { background-image: url('http://amir7amiri.ir/PESLogos/Gallery/20190527_121759.jpg'); }
+}
+
+[id^="Gslide"]:checked + .Gslide {
+    left: 0;
+    z-index: 100;
+    transition: left .65s ease-out;
+}
+.galleryBgr{
+    height: 100%;
+    display: flex;
+    width: 100%;
+    position: fixed;
+    background-size:100% 100%;
+    background-repeat: no-repeat;
+    flex-direction: column;
+}
+.gallery{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+}

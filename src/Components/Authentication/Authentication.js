@@ -15,7 +15,17 @@ const Authentication =props =>{
     const[intValue6,setintvalue6]=useState('')
     const [timeLeft, setTimeLeft] = useState(300);
     const ResendBtn = ()=>{
-        setTimeLeft(300)
+        var adr='https://amir7amiri.ir/pes/api/sms/resend/'+localStorage.getItem('teamid')
+        axios.get(adr)
+            .then(function (response) {
+                // handle success
+                setTimeLeft(300)
+                console.log(response);
+            })
+            .catch(function (error) {
+                // handle error
+                console.log(error);
+            })
     }
     useEffect(()=>{
         setTimeout(() => {
@@ -81,6 +91,7 @@ const Authentication =props =>{
             console.log($btn)
             $btn.removeClass('conBtnDeactive')
             $btn.addClass('conBtnActive')
+            $btn.prop('disabled',false)
             $btn.focus()
         }
     }
@@ -93,7 +104,7 @@ const Authentication =props =>{
           .then(function (response) {
             if(response.data.status==='success')
             {
-                history.push(`/team_selection`)
+                history.push(`/timeselection`)
             }
           })
           .catch(function (error) {
@@ -104,25 +115,25 @@ const Authentication =props =>{
     return(
         <div style={{ height:'100vh',width:'100%' ,alignItems:'center',justifyContent:'center', display:'flex' ,flexDirection:'column'}}>
             <div>
-                <img className='img' src={require('./smartphone.png')}/>
+                <img alt='ax' className='img' src={require('./smartphone.png')}/>
             </div>
             <div style={{ alignItems:'center',justifyContent:'center', display:'flex' ,flexDirection:'row'}}>
-                <input maxLength='1' value={intValue1} onChange={event=>input1handler(event)}  className='input1 allInputs' type='number'/>
-                <input maxLength='1' value={intValue2} onChange={event=>input2handler(event)}  className='input2 allInputs' type='number'/>
-                <input maxLength='1' value={intValue3} onChange={event=>input3handler(event)}  className='input3 allInputs' type='number'/>
-                <input maxLength='1' value={intValue4} onChange={event=>input4handler(event)}  className='input4 allInputs' type='number'/>
-                <input maxLength='1' value={intValue5} onChange={event=>input5handler(event)}  className='input5 allInputs' type='number'/>
-                <input maxLength='1' value={intValue6} onChange={event=>input6handler(event)}  className='input6 allInputs' type='number'/>
+                <input style={{fontFamily:'Vazir-FD'}} maxLength='1' value={intValue1} onChange={event=>input1handler(event)}  className='input1 allInputs' type='number'/>
+                <input style={{fontFamily:'Vazir-FD'}} maxLength='1' value={intValue2} onChange={event=>input2handler(event)}  className='input2 allInputs' type='number'/>
+                <input style={{fontFamily:'Vazir-FD'}} maxLength='1' value={intValue3} onChange={event=>input3handler(event)}  className='input3 allInputs' type='number'/>
+                <input style={{fontFamily:'Vazir-FD'}} maxLength='1' value={intValue4} onChange={event=>input4handler(event)}  className='input4 allInputs' type='number'/>
+                <input style={{fontFamily:'Vazir-FD'}} maxLength='1' value={intValue5} onChange={event=>input5handler(event)}  className='input5 allInputs' type='number'/>
+                <input style={{fontFamily:'Vazir-FD'}} maxLength='1' value={intValue6} onChange={event=>input6handler(event)}  className='input6 allInputs' type='number'/>
             </div>
             <div className='txtContainer'>
-                <text>کد ارسال شده به شماره تلفن بازیکن اول را وارد کنید</text>   
+                <text style={{fontFamily:'Vazir-FD'}}>کد ارسال شده به شماره تلفن بازیکن اول را وارد کنید</text>   
             </div>
             <div className='resendContainer'>
-                {timeLeft===0&&(<text onClick={()=>ResendBtn()} className='ResendtxtLink'>ارسال</text>)}
-                {timeLeft>0&&(<text className='Resendtxt'>ارسال مجدد در {timeLeft}</text>)}
+                {timeLeft===0&&(<text onClick={()=>ResendBtn()} style={{fontFamily:'Vazir-FD'}} className='ResendtxtLink'>ارسال</text>)}
+                {timeLeft>0&&(<text style={{fontFamily:'Vazir-FD'}} className='Resendtxt'>ارسال مجدد در {timeLeft}</text>)}
             </div>
             <div>
-                <button className='conBtnDeactive' onClick={()=>onConfirmBtn()}>تایید</button>
+                <button style={{fontFamily:'Vazir-FD'}} className='conBtnDeactive' onClick={()=>onConfirmBtn()}>تایید</button>
             </div>
         </div>
     )

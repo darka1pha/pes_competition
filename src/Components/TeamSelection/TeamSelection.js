@@ -2,6 +2,7 @@ import React , {useState,useEffect} from 'react'
 import './TeamSelection.scss'
 import axios from 'axios'
 import Loading from '../Loading/Loading'
+import $ from 'jquery'
 const TeamSelection = props =>{
     const [leagues,setLeagues]=useState([])
     //const [currentLeague,setCurrentLeague]=useState({})
@@ -51,9 +52,31 @@ const TeamSelection = props =>{
         event.preventDefault()
         if(SelectedTeam!==undefined&&SelectedTeams.length<3)
         {
-            setSelectedTeams([...SelectedTeams,SelectedTeam])
+            var flag=false
+            if(SelectedTeams.length>=1)
+            {
+                SelectedTeams.map((value)=>{
+                    if(SelectedTeam.name===value.name)
+                    {
+                        flag = true
+                    }
+                })
+                if(flag === true) alert('این تیم قبلا انتخاب شده است')
+                else {
+                    setSelectedTeams([...SelectedTeams,SelectedTeam])
+                }
+            }
+            else setSelectedTeams([...SelectedTeams,SelectedTeam]) 
+            if(SelectedTeams.length === 2)
+            {
+                        var $btn = $('.confBtnDeactive')
+                        $btn.removeClass('confBtnDeactive')
+                        $btn.addClass('confBtnActive')
+                        $btn.prop('disabled',false)
+                        $('.inpt').focus()
+            }
         }
-        else if(SelectedTeams.length=3)
+        else if(SelectedTeams.length === 3)
         {
             alert('شما سه تیم خود را انتخاب کرده اید')
         }
@@ -64,9 +87,9 @@ const TeamSelection = props =>{
         setTeamName(event.target.value)
     }
     const onConfirmAndPayment=(event)=>{
-        setIsLoading(true)
         event.preventDefault()
-        if(SelectedTeams.length===3){
+        console.log(SelectedTeams.length)
+        if(SelectedTeams.length === 3 & teamName !== ''){
             axios.post('https://amir7amiri.ir/pes/api/team/register', {
             id: localStorage.getItem('teamid'),
             team_name: teamName,
@@ -75,16 +98,21 @@ const TeamSelection = props =>{
             pes3team: SelectedTeams[2]
           })
           .then(function (response) {
+            setIsLoading(true)
             console.log(response.data);
+            alert(response)
           })
           .catch(function (error) {
             console.log(error);
+            alert(error)
             setIsLoading(false)
           });
+          window.location.assign("https://amir7amiri.ir/pes/purchase?team_id="+localStorage.getItem('teamid'))
         }
         else if(teamName==='') alert('لطفا نام تیم خود را وارد کنید')
         else alert("لطفا تیم های خود را انتخاب کنید")
     }
+
     return(
         <div>
             {isLoading&&(<Loading size={200}/>)}
@@ -96,14 +124,14 @@ const TeamSelection = props =>{
                         {leagues.map((league ,index)=>{
                                 return(
                                     <div key={index}>
-                                        <header>
+                                        <header >
                                         {
                                             leagues.map((league,index)=>{
-                                                return(<label key={index} for={'Aslide-'+index+'-trigger'}>{league.name}</label>)
+                                                return(<label style={{fontFamily:'Vazir-FD'}} key={index} for={'Aslide-'+index+'-trigger'}>{league.name}</label>)
                                             })
                                         }
                                         </header>
-                                        <input value={league.name} onChange={(event)=>selectedLeague(event)} id={'Aslide-'+index+'-trigger'} type="radio" name="LeagueSlides"/>
+                                        <input value={league.name} onChange={(event)=>selectedLeague(event)} id={'Aslide-'+index+'-trigger'} type="radio" hidden name="LeagueSlides"/>
                                         <section style ={ { backgroundImage: "url("+league.logo_path+")"} }  className="slide">
                                               
                                         </section>
@@ -121,11 +149,11 @@ const TeamSelection = props =>{
                                         <header>
                                         {
                                             LeagueTeams.map((team,index)=>{
-                                                return(<label key={index} for={'slide-'+index+'-trigger'}>{team.name}</label>)
+                                                return(<label style={{fontFamily:'Vazir-FD'}} key={index} for={'slide-'+index+'-trigger'}>{team.name}</label>)
                                             })
                                         }
                                         </header>
-                                        <input value={team.name} onChange={(event)=>selectedTeam(event)} id={'slide-'+index+'-trigger'} type="radio" name="TeamSlides"/>
+                                        <input style={{fontFamily:'Vazir-FD'}} value={team.name} onChange={(event)=>selectedTeam(event)} id={'slide-'+index+'-trigger'} type="radio" hidden name="TeamSlides"/>
                                         <section style ={ { backgroundImage: "url("+team.logo_path+")"} }  className="slide">
                                
                                         </section>
@@ -136,18 +164,30 @@ const TeamSelection = props =>{
                         </div>
                     </div>
                     <div class="pa4 w-100">
-                        <button className="grow" id='btn1' onClick={(event)=>{onAddTeam(event)}}>افزودن تیم</button>
-                        <small class="f9 fw5 moon-gray db mb2">سه تیم اول انتخاب شده ثبت میشوند</small>
+                        <button style={{fontFamily:'Vazir-FD'}} className="grow" id='btn1' onClick={(event)=>{onAddTeam(event)}}>افزودن تیم</button>
+                        <text style={{fontFamily:'Vazir-FD'}} className='entkhab'>سه تیم اول انتخاب شده ثبت میشوند</text>
+                    </div>
+                    <div className='Steams'>
+                    <text style={{fontFamily:'Vazir-FD'}}>تیم های انتخاب شده</text>
+                        {
+                            SelectedTeams.map((value , index)=>{
+                                return(
+                                    <text style={{fontFamily:'Vazir-FD'}} key={index}>{value.name}</text>
+                                )
+                            })
+                        }
                     </div>
                     <div class="black-80">
                         <div class="measure w5">
-                            <label for="name" class="f4 moon-gray b db mb1">نام تیم</label>
-                            <input value={teamName} onChange={(event)=>onTeamNameChange(event)} id="name" class="inpt grow" type="text" aria-describedby="name-desc"/>
-                            <small id="name-desc" class="f8 fw7 moon-gray db mb2">نام تیم شما در مسابقات</small>
+                            <label style={{fontFamily:'Vazir-FD'}} for="name" class="f4 moon-gray b db mb1">نام تیم</label>
+                            <input style={{fontFamily:'Vazir-FD'}} value={teamName} onChange={(event)=>onTeamNameChange(event)} id="name" class="inpt grow" type="text" aria-describedby="name-desc"/>
+                            <small style={{fontFamily:'Vazir-FD'}} id="name-desc" class="f8 fw7 moon-gray db mb2">نام تیم شما در مسابقات</small>
                         </div>
                     </div>
-                    <div class="pa4 black-80 w-100">
-                        <button className="grow" id='btn1' onClick={(event)=>{onConfirmAndPayment(event)}}>تایید و پرداخت</button>
+                    <div>
+                        <form class="pa4 black-80 w-100" style={{backgroundColor:'rgba(0,0,0,0)'}}>
+                            <button style={{fontFamily:'Vazir-FD'}} type='button' className='confBtnDeactive' onClick={(event)=>{onConfirmAndPayment(event)}}>تایید و پرداخت</button>
+                        </form>
                     </div>
                 </div>
             </div>)}
