@@ -1,6 +1,6 @@
 import React from 'react'
 import './CheckSuccess.scss'
-
+import NavBar from '../NavBar/NavBar'
 const CheckSuccess = props =>{
     return(
         <div class="body">

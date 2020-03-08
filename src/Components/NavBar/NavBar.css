@@ -1,12 +1,15 @@
 @media (max-width: 575.98px) { 
     .nav{
-        font-size: 10px;
-        font-weight: 600;
+        font-size: 0.55rem;
+        font-weight: 700;
         color: black;
     }
     .icons{
-        height: 35px;
-        margin:2px;
+        height: 45px;
+        margin:auto 5px
+    }
+    .sbicn{
+        display: none;
     }
  }
 
@@ -18,8 +21,10 @@
         color: black;
     }
     .icons{
-        height: 35px;
-        margin:2px;
+        height: 45px;
+    }
+    .sbicn{
+        display: none;
     }
  }
 
@@ -32,8 +37,13 @@
     }
     .icons{
         height: 40px;
-        margin:2px;
+        margin:auto 10px
     }
+    .navbar .navbar-nav {
+        display:inline-block;
+        float: none;
+        vertical-align: top;
+      }
  }
 
 
@@ -45,8 +55,13 @@
     }
     .icons{
         height: 40px;
-        margin:2px;
+        margin:auto 10px
     }
+    .navbar .navbar-nav {
+        display:inline-block;
+        float: none;
+        vertical-align: top;
+      }
  }
 
 
@@ -58,6 +73,12 @@
     }
     .icons{
         height: 40px;
-        margin:2px;
+        margin:auto 10px
     }
+    .navbar .navbar-nav {
+        display:inline-block;
+        float: none;
+        vertical-align: top;
+      }
  }
+  

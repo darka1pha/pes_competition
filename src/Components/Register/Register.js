@@ -90,13 +90,10 @@ const onConfirmPress=()=>{
             localStorage.setItem('teamid' , response.data.data.team_id)
             history.push(`/authentication`)
         } 
-        
     })
     .catch(function(err){
-        console.log(err)
         setIsLoading(false)
     })
-
 }
 
     return(
@@ -104,42 +101,33 @@ const onConfirmPress=()=>{
             <NavBar/>
             {isLoading&&(<Loading size={250}/>)}
             {!isLoading&&(
-                <div id='bgr'>
-                        <div class='register-wrapper'>
-                            <div id='txt'>
-                                <text style={{fontFamily:'Vazir-FD'}}>ثبت نام</text>
-                            </div>
-                            <div class="container">
-                                <div class="form-container sign-in-container">
-                                    <form action="#">
-                                        <h1 style={{fontFamily:'Vazir-FD'}}>بازیکن شماره 1</h1>
-                                        <input style={{fontFamily:'Vazir-FD'}} className='input' value={user1.name} onChange={(event)=>name_user1_change(event)} type="text" placeholder="نام"/>
-                                        <input style={{fontFamily:'Vazir-FD'}} className='input' value={user1.lastname} onChange={(event)=>lastname_user1_change(event)} type="text" placeholder="نام خانوادگی"/>
-                                        <input style={{fontFamily:'Vazir-FD'}} className='input' value={user1.st_number} onChange={(event)=>st_number_user1_change(event)} type="text" placeholder="شماره دانشجویی"/>
-                                        <input style={{fontFamily:'Vazir-FD'}} className='input' value={user1.field} onChange={(event)=>field_user1_change(event)} type="text" placeholder="رشته"/>
-                                        <input style={{fontFamily:'Vazir-FD'}} className='input' value={user1.national_code} onChange={(event)=>national_code_user1_change(event)} type="text" placeholder="شماره ملی"/>
-                                        <input style={{fontFamily:'Vazir-FD'}} className='input' value={user1.phone_number} onChange={(event)=>phone_number_user1_change(event)} type="text" placeholder="شماره تلفن"/>
-                                    </form>
-                                </div>
-                                <div class="overlay-container">
-                                    <div class="overlay">
-                                        <form class="overlay-panel overlay-right">
-                                                <h1 style={{fontFamily:'Vazir-FD'}}>بازیکن شماره 2</h1>
-                                                <input style={{fontFamily:'Vazir-FD'}} className='input' value={user2.name} onChange={(event)=>name_user2_change(event)} type="text" placeholder="نام"/>
-                                                <input style={{fontFamily:'Vazir-FD'}} className='input' value={user2.lastname} onChange={(event)=>lastname_user2_change(event)}  type="text" placeholder="نام خانوادگی"/>
-                                                <input style={{fontFamily:'Vazir-FD'}} className='input' value={user2.st_number} onChange={(event)=>st_number_user2_change(event)} type="text" placeholder="شماره دانشجویی"/>
-                                                <input style={{fontFamily:'Vazir-FD'}} className='input' value={user2.field} onChange={(event)=>field_user2_change(event)} type="text" placeholder="رشته"/>
-                                                <input style={{fontFamily:'Vazir-FD'}} className='input' value={user2.national_code} onChange={(event)=>national_code_user2_change(event)} type="text" placeholder="شماره ملی"/>
-                                                <input style={{fontFamily:'Vazir-FD'}} className='input' value={user2.phone_number} onChange={(event)=>phone_number_user2_change(event)} type="text" placeholder="شماره تلفن"/>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                            <div>
-                                <button style={{fontFamily:'Vazir-FD'}} className='grow' onClick={()=>{onConfirmPress()}} id='confirm-register'>تایید</button>
-                            </div>
-                        </div>
-                </div>)}
+                <div className="mybgr overflow-hidden  align-items-center d-flex flex-column" >
+                <text style={{fontFamily:'Vazir-FD'}} className='myHeader mt-4 mb-4'>ثبت نام</text>
+                  <div className='wrapper d-flex flex-row shadow bg-white '>
+                    <div className=' player1 d-flex flex-column w-50 align-items-center'>
+                      <text style={{fontFamily:'Vazir-FD'}} className='player1name mt-4'>بازیکن 1</text>
+                      <input value={user1.name} onChange={(event)=>name_user1_change(event)} style={{fontFamily:'Vazir-FD'}} placeholder='نام' className='input w-75 mt-4' type='text' />
+                      <input value={user1.lastname} onChange={(event)=>lastname_user1_change(event)} style={{fontFamily:'Vazir-FD'}} placeholder='نام خانوادگی' className='input w-75 mt-4' type='text' />
+                      <input value={user1.st_number} onChange={(event)=>st_number_user1_change(event)} style={{fontFamily:'Vazir-FD'}} placeholder='شماره دانشجویی' className='input w-75 mt-4' type='text' />
+                      <input value={user1.field} onChange={(event)=>field_user1_change(event)} style={{fontFamily:'Vazir-FD'}} placeholder='رشته' className='input w-75 mt-4' type='text' />
+                      <input value={user1.national_code} onChange={(event)=>national_code_user1_change(event)} style={{fontFamily:'Vazir-FD'}} placeholder='شماره ملی' className='input w-75 mt-4' type='text' />
+                      <input className='input' value={user1.phone_number} onChange={(event)=>phone_number_user1_change(event)} style={{fontFamily:'Vazir-FD'}} placeholder='شماره تلفن' className='input w-75 mt-4 mb-5' type='text' />
+                    </div>
+                    <div className='player2 d-flex flex-column w-50 align-items-center'>
+                      <text style={{fontFamily:'Vazir-FD'}} className='player2name mt-4'>بازیکن 2</text>
+                      <input value={user2.name} onChange={(event)=>name_user2_change(event)} style={{fontFamily:'Vazir-FD'}} style={{fontFamily:'Vazir-FD'}} placeholder='نام'  className='input w-75 mt-4 ltr' type='text' />
+                      <input value={user2.lastname} onChange={(event)=>lastname_user2_change(event)} style={{fontFamily:'Vazir-FD'}} placeholder='نام خانوادگی' className='input w-75 mt-4' type='text' />
+                      <input value={user2.st_number} onChange={(event)=>st_number_user2_change(event)} style={{fontFamily:'Vazir-FD'}} placeholder='شماره دانشجویی' className='input w-75 mt-4' type='text' />
+                      <input value={user2.field} onChange={(event)=>field_user2_change(event)} style={{fontFamily:'Vazir-FD'}} placeholder='رشته' className='input w-75 mt-4' type='text' />
+                      <input value={user2.national_code} onChange={(event)=>national_code_user2_change(event)} style={{fontFamily:'Vazir-FD'}} placeholder='شماره ملی' className='input w-75 mt-4' type='text' />
+                      <input value={user2.phone_number} onChange={(event)=>phone_number_user2_change(event)} style={{fontFamily:'Vazir-FD'}} placeholder='شماره تلفن' className='input w-75 mt-4 mb-5' type='text' />
+                    </div>
+                  </div>
+                  <div className='mt-4 mb-4'>
+                  <button onClick={()=>{onConfirmPress()}} style={{fontFamily:'Vazir-FD'}} className='btnn'>تایید</button>
+                  </div>
+              </div>
+            )}
         </div>
     )
 }

@@ -5,7 +5,7 @@ import Countdown from 'react-countdown-now'
 import {Link} from 'react-router-dom'
 
 const Home = props =>{
-    const Completionist = () => <span>You are good to go!</span>;
+    const Completionist = () => <span>مسابقات هم اکنون شروع شده است</span>;
     const renderer = ({ days,hours, minutes, seconds, completed }) => {
         if (completed) {
           // Render a completed state
@@ -15,19 +15,19 @@ const Home = props =>{
           return (
                 <div  id='timer'>
                     <div id='day'>
-                        <div id='time'>{days} </div>
+                        <div style={{fontFamily:'Vazir-FD'}} id='time'>{days} </div>
                         <text style={{fontFamily:'Vazir-FD'}} id='now'>روز</text>
                     </div>
                     <div id='day'> 
-                        <div id='time'>{hours} </div> 
+                        <div style={{fontFamily:'Vazir-FD'}} id='time'>{hours} </div> 
                         <text style={{fontFamily:'Vazir-FD'}} id='now'>ساعت</text>
                     </div>
                     <div id='day'>
-                        <div id='time'>{minutes} </div>
+                        <div style={{fontFamily:'Vazir-FD'}} id='time'>{minutes} </div>
                         <text style={{fontFamily:'Vazir-FD'}} id='now'>دقیقه</text>
                     </div>
                     <div id='day'>
-                        <div id='time'>{seconds}</div>
+                        <div style={{fontFamily:'Vazir-FD'}} id='time'>{seconds}</div>
                         <text style={{fontFamily:'Vazir-FD'}} id='now'>ثانیه</text>
                     </div>
                 </div>
@@ -41,7 +41,7 @@ const Home = props =>{
                     <div id='wrapper'>
                         <div  id='time-wrapper'>
                             <Countdown 
-                            date={Date.now() + 100000000}
+                            date={new Date('March 25, 2020 00:00:00')}
                             renderer={renderer}
                             />
                         </div>
@@ -61,7 +61,7 @@ const Home = props =>{
                                  <br></br> 
                                  ورودی هر تیم 20,000 تومان
                                  <br></br> <br></br>
-                                 پشتیبانی <a href='https://t.me/cec_support' style={{color:'white'}}>@cec_support</a>
+                                 پشتیبانی <a target='_blank' href='https://t.me/cec_support' style={{color:'white'}}>cec_support@</a>
                             </p>     
                             
                             <Link style={{fontFamily:'Vazir-FD'}} to='/register' className='grow' id='reg-btn'>ثبت نام</Link>              

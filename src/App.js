@@ -10,9 +10,13 @@ import Rules from './Components/Rules/Rules'
 import Gallery from './Components/Gallery/Gallery'
 import Chart from './Components/Chart/Chart'
 import TimeSelection from './Components/TimeSelection/TimeSelection'
+import CheckFailed from './Components/CheckFailed/CheckFailed'
+import CheckSuccess from './Components/CheckSuccess/CheckSuccess'
+import TeamList from './Components/TeamList/TeamList'
+import Aboutus from './Components/Aboutus/Aboutus'
 function App() {
   return (
-    <Router basename='/pescomp'>
+    <Router basename='/'>
       <div className="App">
         <Switch>
           <Route path='/' exact component={Home} />
@@ -23,6 +27,10 @@ function App() {
           <Route path='/gallery' component={Gallery}/>
           <Route path='/chart' component={Chart}/>
           <Route path='/timeselection' component={TimeSelection}/>
+          <Route path='/paymentfailed' component={CheckFailed}/>
+          <Route path='/paymentsuccess' component={CheckSuccess}/>
+          <Route path='/teamlist' component={TeamList}/>
+          <Route path='/aboutus' component={Aboutus}/>
         </Switch>
       </div>
     </Router>
